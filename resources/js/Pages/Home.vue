@@ -1,20 +1,13 @@
 <template>
   <Layout>
-	 <Head><title>Welcome</title></Head>
-	 <h1>Welcome</h1>
-	 <p>coucou</p>
+	 <h1>Welcome To the chinese dome</h1>
 	 {{ flower }}
   </Layout>
 </template>
-<script>
-import Layout from './Layout.vue'
-import {Head} from '@inertiajs/inertia-vue3'
 
-export default {
-    components: {
-        Head, Layout,
-    }, props: {
-        flower: String
-    },
-}
+<script setup>
+import {ref, defineProps} from 'vue'
+import Layout from './Layout.vue'
+
+const props = defineProps(['flower']);
 </script>
