@@ -13,7 +13,7 @@
 			 </el-col>
 			 <el-col :span="3">
 				<el-link type="primary">
-				  <Link href="/zodiac" as="span">Get zodiac sign</Link>
+				  <Link href="/about" as="span">About</Link>
 				</el-link>
 			 </el-col>
 		  </el-row>
@@ -24,6 +24,7 @@
 		  </article>
 		</el-main>
 	 </el-container>
+
   </div>
 </template>
 <script setup>

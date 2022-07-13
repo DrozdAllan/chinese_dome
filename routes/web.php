@@ -16,6 +16,8 @@ use Inertia\Inertia;
 
 Route::get('/', function () {
     return Inertia::render('Home', ['flower' => 'rose']);
-});
+})->name('home');
 
-Route::get('/zodiac', [\App\Http\Controllers\ZodiacController::class, 'main']);
+Route::post('/zodiac', [\App\Http\Controllers\ZodiacController::class, 'main']);
+
+Route::inertia('/about', 'About');
