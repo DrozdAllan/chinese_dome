@@ -46,17 +46,15 @@
 	 </el-row>
   </Layout>
 </template>
-<script setup>
+<script setup lang="ts">
 import Layout from './Layout.vue'
 import {Head} from '@inertiajs/inertia-vue3'
-import {useCounterStore} from '../store/counter'
 import Zodiac from '../Components/Zodiac.vue'
 import Name from '../Components/Name.vue'
 import Translator from '../Components/Translator.vue'
 import Weather from '../Components/Weather.vue'
 
 const props = defineProps({'flower': String});
-const counterStore = useCounterStore();
 </script>
 <style scoped>
 .el-col {

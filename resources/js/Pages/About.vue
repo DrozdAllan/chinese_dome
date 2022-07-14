@@ -1,7 +1,8 @@
 <template>
-  <Head title="About" />
+  <Head title="About" ></Head>
   <Layout>
 	 <h2>About component</h2>
+
   </Layout>
 </template>
 <script setup lang="ts">
