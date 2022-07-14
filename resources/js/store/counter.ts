@@ -8,7 +8,7 @@ export const useCounterStore = defineStore('counter', {
         }
     },
     actions: {
-        incrementBy(value) {
+        incrementBy(value: number) {
             this.counter += value;
             this.numberOfChanges += 1;
         }

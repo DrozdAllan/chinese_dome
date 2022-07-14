@@ -3,6 +3,7 @@ import laravel from 'laravel-vite-plugin';
 import vue from '@vitejs/plugin-vue';
 
 export default defineConfig({
+    // TODO: https://stackoverflow.com/questions/63724523/how-to-add-typescript-to-vue-3-and-vite-project
     plugins: [
         laravel([
             'resources/js/app.js',
