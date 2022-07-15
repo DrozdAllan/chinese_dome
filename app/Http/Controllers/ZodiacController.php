@@ -10,7 +10,10 @@ use Inertia\Inertia;
 
 class ZodiacController extends Controller
 {
-    public function main(Request $request) {
+    public function main() {
+        return Inertia::render('Zodiac');
+    }
+    public function getZodiac(Request $request) {
         // 1- retrieve the birthday from the post
         $birthday = $request->get('birthday');
 

@@ -15,9 +15,15 @@ use Inertia\Inertia;
 */
 
 Route::get('/', function () {
-    return Inertia::render('Home', ['flower' => 'rose']);
-})->name('home');
+    return Inertia::render('About', ['flower' => 'rose']);
+})
+     ->name('about');
 
-Route::post('/zodiac', [\App\Http\Controllers\ZodiacController::class, 'main']);
+Route::get('/zodiac', [\App\Http\Controllers\ZodiacController::class, 'main']);
+Route::post('/zodiac', [\App\Http\Controllers\ZodiacController::class, 'getZodiac']);
 
-Route::inertia('/about', 'About');
+Route::get('/name', [\App\Http\Controllers\NameController::class, 'main']);
+
+Route::get('/translator', [\App\Http\Controllers\TranslatorController::class, 'main']);
+
+Route::get('/map', [\App\Http\Controllers\MapController::class, 'main']);
