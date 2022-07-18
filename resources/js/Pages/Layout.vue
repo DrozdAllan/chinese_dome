@@ -4,31 +4,31 @@
 				<el-header>
 					 <el-row align="middle" class="heading">
 						  <el-col :span="3">
-								Logo ou title
+								Logo
 						  </el-col>
 						  <el-col :span="3">
-								<el-link type="primary">
-									 <Link href="/" as="span">About</Link>
+								<el-link type="primary" @click="tabStore.changeTab(0)">
+									 <Link href="/" as="span" :class="{active: tab === 0}" >About</Link>
 								</el-link>
 						  </el-col>
 						  <el-col :span="3">
-								<el-link type="primary">
-									 <Link href="/zodiac" as="span">Zodiac</Link>
+								<el-link type="primary" @click="tabStore.changeTab(1)">
+									 <Link href="/zodiac" as="span" :class="{active: tab === 1}">Zodiac</Link>
 								</el-link>
 						  </el-col>
 						  <el-col :span="3">
-								<el-link type="primary">
-									 <Link href="/name" as="span">Name</Link>
+								<el-link type="primary" @click="tabStore.changeTab(2)">
+									 <Link href="/name" as="span" :class="{active: tab === 2}">Name</Link>
 								</el-link>
 						  </el-col>
 						  <el-col :span="3">
-								<el-link type="primary">
-									 <Link href="/translator" as="span">Translator</Link>
+								<el-link type="primary" @click="tabStore.changeTab(3)">
+									 <Link href="/translator" as="span" :class="{active: tab === 3}">Translator</Link>
 								</el-link>
 						  </el-col>
 						  <el-col :span="3">
-								<el-link type="primary">
-									 <Link href="/map" as="span">Map</Link>
+								<el-link type="primary" @click="tabStore.changeTab(4)">
+									 <Link href="/map" as="span" :class="{active: tab === 4}">Map</Link>
 								</el-link>
 						  </el-col>
 					 </el-row>
@@ -42,7 +42,13 @@
 	 </div>
 </template>
 <script setup>
+import {computed} from "vue";
 import {Link} from '@inertiajs/inertia-vue3'
+import {useTabStore} from "../store/tab";
+
+const tabStore = useTabStore();
+const tab = tabStore.tab;
+
 </script>
 <style>
 .common-layout {
@@ -50,10 +56,15 @@ import {Link} from '@inertiajs/inertia-vue3'
 }
 
 .el-header {
-    border-bottom: 1px solid rgb(64, 158, 255);
+    border-bottom: 1px solid #A3262A;
 }
 
 .heading {
     height: 60px;
+}
+
+.active {
+   color: #F5AC27;
+	text-decoration: underline wavy #F5AC27;
 }
 </style>
