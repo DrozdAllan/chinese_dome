@@ -23,7 +23,9 @@ class ZodiacController extends Controller
                           ->firstOrFail();
         // TODO: chinese year is from around february so you have to calculate smthg
 
-        // TODO: db https://www.chinahighlights.com/travelguide/chinese-zodiac/
+        // TODO: add images for animals https://mixkit.co/free-stock-art/discover/chinese-zodiac/
+        // TODO: add images for flowers ?
+        // link used for DB https://www.chinahighlights.com/travelguide/chinese-zodiac/
         return response()->json(['zodiac' => $result->zodiac]);
     }
 }

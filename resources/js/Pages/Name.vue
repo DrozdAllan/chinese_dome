@@ -9,7 +9,7 @@
 								<span>Chinese Name</span>
 						  </div>
 					 </template>
-					 https://rapidapi.com/zhangyuqi940612/api/chinese-names/
+					 pas d'api dispo
 				</el-card>
 		  </el-col>
 	 </Layout>

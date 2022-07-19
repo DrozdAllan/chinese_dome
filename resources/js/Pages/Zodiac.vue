@@ -39,8 +39,6 @@ import Layout from './Layout.vue';
 import {ref} from 'vue'
 import axios from "axios";
 
-const zodiacImage: string = "https://thumbs.dreamstime.com/b/poster-all-chinese-zodiac-animals-shengxiao-names-written-calligraphy-golden-silhouette-red-colors-symbols-109164435.jpg";
-
 const birthday = ref(null);
 const zodiac = ref(null);
 const isLoading = ref(false);
@@ -62,11 +60,12 @@ function onDelete() {
 }
 </script>
 <style scoped>
+/*TODO: réduire la taille avec gimp, arranger en banner */
 .bg-img {
-    background-image: url("https://thumbs.dreamstime.com/b/poster-all-chinese-zodiac-animals-shengxiao-names-written-calligraphy-golden-silhouette-red-colors-symbols-109164435.jpg");
+    background-image: url("../../assets/2272.jpg");
     background-repeat: no-repeat;
     background-position: center;
-    background-size: cover;
+    background-size: contain;
     height: 100px;
 }
 </style>
