@@ -1,10 +1,12 @@
 <template>
 	 <Head title="Zodiac Sign"></Head>
 	 <Layout>
-		  trouver une autre image en forme de banniere
-		  <el-row justify="center" align="middle" class="bg-img">
+		  <el-row justify="center" align="middle">
 				<h3>
 					 Zodiac Sign</h3>
+		  </el-row>
+		  <el-row justify="center">
+				<el-image :src="imageSrc" fit="contain" style="width: 1327px; height: 258px" title="image created by tartila" />
 		  </el-row>
 		  <el-row justify="center" style="padding: 10px 0 10px 0">
 				<el-form @submit.prevent>
@@ -42,7 +44,7 @@ import axios from "axios";
 const birthday = ref(null);
 const zodiac = ref(null);
 const isLoading = ref(false);
-
+const imageSrc = "/assets/2272.jpg";
 
 function onSubmit() {
     // TODO: catch error
@@ -66,6 +68,6 @@ function onDelete() {
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-    height: 100px;
+    height: 300px;
 }
 </style>

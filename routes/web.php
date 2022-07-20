@@ -23,6 +23,7 @@ Route::get('/zodiac', [\App\Http\Controllers\ZodiacController::class, 'main']);
 Route::post('/zodiac', [\App\Http\Controllers\ZodiacController::class, 'getZodiac']);
 
 Route::get('/name', [\App\Http\Controllers\NameController::class, 'main']);
+Route::post('/name', [\App\Http\Controllers\NameController::class, 'getChineseName']);
 
 Route::get('/translator', [\App\Http\Controllers\TranslatorController::class, 'main']);
 

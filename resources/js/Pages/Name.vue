@@ -1,21 +1,60 @@
 <template>
 	 <Head title="Chinese Name" />
 	 <Layout>
-		  <h2>Chinese name page</h2>
-		  <el-col :span="12">
-				<el-card class="box-card" shadow="hover">
-					 <template #header>
-						  <div class="card-header">
-								<span>Chinese Name</span>
-						  </div>
-					 </template>
-					 pas d'api dispo
-				</el-card>
-		  </el-col>
+		  <el-row justify="center" align="middle" class="bg-img">
+				<h3>
+					 Get Your Chinese Name</h3>
+		  </el-row>
+		  <el-row justify="center" style="padding: 10px 0 10px 0">
+				<el-form @submit.prevent>
+					 <el-form-item label="Enter Your Name">
+						<el-input v-model="name" label="Allan" id="namePicker"></el-input>
+					 </el-form-item>
+					 <el-row justify="center">
+						  <el-button v-if="chineseName" type='warning' @click="onDelete">
+								Try another name
+						  </el-button>
+						  <el-button v-else type='primary' @click="onSubmit" :loading="isLoading">
+								Get my chinese name
+						  </el-button>
+					 </el-row>
+				</el-form>
+		  </el-row>
+		  <el-row justify="center">
+				<el-collapse-transition>
+					 <div v-if="chineseName">
+						  Your chinese name sign is : {{ chineseName }} <br>
+						  With pinyin it is : {{ chineseName }} <br>
+					 </div>
+				</el-collapse-transition>
+		  </el-row>
 	 </Layout>
 </template>
 <script setup lang="ts">
 import Layout from './Layout.vue'
 import {Head} from '@inertiajs/inertia-vue3'
+import {ref} from 'vue';
+import axios from "axios";
+
+const name = ref('');
+const chineseName = ref('');
+const isLoading = ref(false);
+
+function onSubmit() {
+    // TODO: catch error
+    isLoading.value = true;
+    axios.post('/name', {'name': name.value}).then((result) => {
+        chineseName.value = result.data['chineseName'];
+        isLoading.value = false;
+    });
+}
+
+function onDelete() {
+    name.value = '';
+    chineseName.value = '';
+    document.getElementById('namePicker')?.focus();
+}
+
+
 </script>
 <style scoped></style>
