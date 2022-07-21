@@ -11,7 +11,7 @@
 						<el-input v-model="name" label="Allan" id="namePicker"></el-input>
 					 </el-form-item>
 					 <el-row justify="center">
-						  <el-button v-if="chineseName" type='warning' @click="onDelete">
+						  <el-button v-if="simplifiedChinese" type='warning' @click="onDelete">
 								Try another name
 						  </el-button>
 						  <el-button v-else type='primary' @click="onSubmit" :loading="isLoading">
@@ -22,9 +22,9 @@
 		  </el-row>
 		  <el-row justify="center">
 				<el-collapse-transition>
-					 <div v-if="chineseName">
-						  Your chinese name sign is : {{ chineseName }} <br>
-						  With pinyin it is : {{ chineseName }} <br>
+					 <div v-if="simplifiedChinese">
+						  Your chinese name sign is : {{ simplifiedChinese }} <br>
+						  {{ pinyinName }}
 					 </div>
 				</el-collapse-transition>
 		  </el-row>
@@ -37,21 +37,23 @@ import {ref} from 'vue';
 import axios from "axios";
 
 const name = ref('');
-const chineseName = ref('');
+const simplifiedChinese = ref('');
+const pinyinName = ref('');
 const isLoading = ref(false);
 
 function onSubmit() {
     // TODO: catch error
     isLoading.value = true;
     axios.post('/name', {'name': name.value}).then((result) => {
-        chineseName.value = result.data['chineseName'];
+        simplifiedChinese.value = result.data['simplifiedChinese'];
+        pinyinName.value = result.data['pinyinName'];
         isLoading.value = false;
     });
 }
 
 function onDelete() {
     name.value = '';
-    chineseName.value = '';
+    simplifiedChinese.value = '';
     document.getElementById('namePicker')?.focus();
 }
 

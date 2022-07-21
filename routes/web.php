@@ -25,6 +25,4 @@ Route::post('/zodiac', [\App\Http\Controllers\ZodiacController::class, 'getZodia
 Route::get('/name', [\App\Http\Controllers\NameController::class, 'main']);
 Route::post('/name', [\App\Http\Controllers\NameController::class, 'getChineseName']);
 
-Route::get('/translator', [\App\Http\Controllers\TranslatorController::class, 'main']);
-
 Route::get('/map', [\App\Http\Controllers\MapController::class, 'main']);

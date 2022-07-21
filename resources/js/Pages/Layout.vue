@@ -22,11 +22,6 @@
 								</el-link>
 						  </el-col>
 						  <el-col :span="3">
-								<el-link type="primary" @click="tabStore.changeTab(3)">
-									 <Link href="/translator" as="span" :class="{active: tab === 3}">Translator</Link>
-								</el-link>
-						  </el-col>
-						  <el-col :span="3">
 								<el-link type="primary" @click="tabStore.changeTab(4)">
 									 <Link href="/map" as="span" :class="{active: tab === 4}">Map</Link>
 								</el-link>
@@ -64,7 +59,7 @@ const tab = tabStore.tab;
 }
 
 .active {
-   color: #F5AC27;
-	text-decoration: underline wavy #F5AC27;
+   color: #A3262A;
+	text-decoration: underline wavy #A3262A;
 }
 </style>

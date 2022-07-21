@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Service\Translator;
+use Google\Cloud\Translate\V2\TranslateClient;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Overtrue\Pinyin\Pinyin;
 
 class NameController extends Controller
 {
@@ -12,20 +13,15 @@ class NameController extends Controller
         return Inertia::render('Name');
     }
 
-    public function getChineseName(Request $request, Translator $translator) {
+    public function getChineseName(Request $request, Pinyin $pinyin) {
         $name = $request->get('name');
 
-        $result = $translator->translate($name);
+        $translate = new TranslateClient(['key' => env('API_KEY')]);
 
-        dd($result);
+        $result = $translate->translate($name, ['source' => 'en', 'target' => 'zh-CN']);
+        $simplifiedChinese = $result['text'];
+        $pinyinName = $pinyin->name($simplifiedChinese, PINYIN_TONE);
 
-        // TODO: pass this into TranslateController and remove the service
-
-        // TODO: try https://www.mdbg.net/chinese/dictionary?page=cedict to get pinyin
-        // TODO: if it's too hard just remove the chinese name feature
-
-        return response()->json(['chineseName' => $result]);
+        return response()->json(['simplifiedChinese' => $simplifiedChinese, 'pinyinName' => implode(" ", $pinyinName)]);
     }
-
-
 }
