@@ -60,6 +60,6 @@ const tab = tabStore.tab;
 
 .active {
    color: #A3262A;
-	text-decoration: underline wavy #A3262A;
+	/*text-decoration: underline wavy #A3262A;*/
 }
 </style>

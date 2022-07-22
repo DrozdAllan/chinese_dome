@@ -62,12 +62,4 @@ function onDelete() {
 }
 </script>
 <style scoped>
-/*TODO: réduire la taille avec gimp, arranger en banner */
-.bg-img {
-    background-image: url("../../assets/2272.jpg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    height: 300px;
-}
 </style>
