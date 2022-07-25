@@ -2,24 +2,32 @@
 	 <Head title="Interactive Map" />
 	 <Layout>
 		  <el-row justify="center" align="middle">
-				<h3>
-					 China Map</h3>
+				<h3>China Map</h3>
 		  </el-row>
-		  <el-select v-model="filter" class="m-2" placeholder="Select" size="large">
-				<el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
-		  </el-select>
+		  <el-row justify="center" align="middle">
+				<el-select v-model="filter" class="m-2" placeholder="Select a layer" size="large">
+					 <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
+				</el-select>
+		  </el-row>
 		  <el-row justify="center" style="padding: 10px 0 10px 0">
-				<l-map style="height: 500px" :zoom="zoom" :center="center">
+				<l-map style="height: 500px" :zoom="4" :center="[37.00, 110.29]">
 					 <l-tile-layer :url="url" :attribution="attribution" />
 					 <l-geo-json :geojson="geojson" :options="geooptions" />
-					 <l-marker :lat-lng="[37.00, 110.29]">
-						  <l-tooltip :options="{'permanent': true}">
-								Shenzen
+					 <l-marker v-if="filter === 'bigCities'" v-for="city in bigCities" :lat-lng="city['lat-lng']">
+						  <l-tooltip :options="{'permanent': true, 'direction': city['direction'], 'offset': city['offset']}">
+								{{ city.tooltip }}
 						  </l-tooltip>
 					 </l-marker>
-					 <l-circle v-if="filter === 'bigCities'" :lat-lng="circle.center" :radius="circle.radius"
-								  :color="circle.color" />
-					 <l-rectangle v-else-if="filter === 'rivers'" :lat-lngs="rectangle" />
+					 <l-marker v-if="filter === 'provinces'" v-for="province in provinces" :lat-lng="province['lat-lng']">
+						  <l-tooltip :options="{'permanent': true, 'direction': province['direction'], 'offset': province['offset']}">
+								{{ province.tooltip }}
+						  </l-tooltip>
+					 </l-marker>
+					 <l-marker v-if="filter === 'lakes'" v-for="lake in lakes" :lat-lng="lake['lat-lng']">
+						  <l-tooltip :options="{'permanent': true, 'direction': lake['direction'], 'offset': lake['offset']}">
+								{{ lake.tooltip }}
+						  </l-tooltip>
+					 </l-marker>
 				</l-map>
 		  </el-row>
 	 </Layout>
@@ -27,44 +35,39 @@
 <script setup>
 import Layout from './Layout.vue';
 import {Head} from '@inertiajs/inertia-vue3';
-import {onBeforeMount, ref} from "vue";
+import {ref} from "vue";
 import 'leaflet/dist/leaflet.css';
-import {LMap, LTileLayer, LCircle, LRectangle, LGeoJson, LMarker, LTooltip} from "@vue-leaflet/vue-leaflet";
+import {LMap, LTileLayer, LGeoJson, LMarker, LTooltip} from "@vue-leaflet/vue-leaflet";
 import {ChinaData} from 'china-map-geojson';
+import {bigCities, provinces, lakes} from '../utils/mapData';
 
 const url = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
 const attribution = '&copy; <a target="_blank" href="http://osm.org/copyright">OpenStreetMap</a> contributors';
-
-const zoom = 4;
-const center = [37.00, 110.29];
-const filter = ref('');
 const geojson = ChinaData;
 const geooptions = {
     style: {
         "color": "#A3262A",
         "fillColor": "rgba(255,18,52,0.23)",
         "weight": 1
-    }
+    },
 };
 
+const filter = ref('');
 
-// TODO: https://en.wikipedia.org/wiki/List_of_lakes_of_China
-
-// TODO: https://en.wikipedia.org/wiki/List_of_cities_in_China_by_population
 const options = [{
+    label: 'Main Cities',
+    value: 'bigCities',
+}, {
+    label: 'Provinces',
+    value: 'provinces',
+}, {
     label: 'Lakes',
     value: 'lakes',
-}, {
-    label: 'BigCities',
-    value: 'bigCities',
 },];
 
-
-const circle = {
-    center: [31.59, 120.29],
-    radius: 4500,
-    color: 'red'
-};
-
-const rectangle = [[30.59, 119.29], [32.59, 119.29], [30.59, 121.29], [32.59, 121.29],];
 </script>
+<style>
+a > svg {
+    visibility: hidden;
+}
+</style>
