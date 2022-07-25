@@ -21,11 +21,11 @@ class ZodiacController extends Controller
         $result = Birthday::where('year', $birthday)
                           ->with('zodiac')
                           ->firstOrFail();
-        // TODO: chinese year is from around february so you have to calculate smthg
 
-        // TODO: add images for animals https://mixkit.co/free-stock-art/discover/chinese-zodiac/
-        // TODO: add images for flowers ?
         // link used for DB https://www.chinahighlights.com/travelguide/chinese-zodiac/
+        // TODO: add disclaimer about chinese year different from normal year
+        // TODO: crop zodiacs images
+        // TODO: add images for flowers ?
         return response()->json(['zodiac' => $result->zodiac]);
     }
 }

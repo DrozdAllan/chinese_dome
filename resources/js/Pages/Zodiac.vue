@@ -1,10 +1,6 @@
 <template>
 	 <Head title="Zodiac Sign"></Head>
 	 <Layout>
-		  <el-row justify="center" align="middle">
-				<h3>
-					 Zodiac Sign</h3>
-		  </el-row>
 		  <el-row justify="center">
 				<el-image :src="imageSrc" fit="contain" style="width: 1327px; height: 258px" title="image created by tartila" />
 		  </el-row>
@@ -27,7 +23,8 @@
 		  <el-row justify="center">
 				<el-collapse-transition>
 					 <div v-if="zodiac">
-						  Your zodiac sign is : {{ zodiac.name }} <br> Your personality is : {{ zodiac.personality }} <br>
+						  Your zodiac sign is : {{ zodiac.name }} <el-image :src="`assets/zodiacs/${zodiac.pic}.png`" style="height: 200px" />
+						  <br> Your personality is : {{ zodiac.personality }} <br>
 						  Your lucky colors are : {{ zodiac.lucky_colors }} <br> Your lucky flowers are :
 						  {{ zodiac.lucky_flowers }} <br> Your lucky numbers are : {{ zodiac.lucky_numbers }}
 					 </div>
@@ -44,10 +41,11 @@ import axios from "axios";
 const birthday = ref(null);
 const zodiac = ref(null);
 const isLoading = ref(false);
-const imageSrc = "/assets/2272.jpg";
+const imageSrc = "/assets/zodiacMain.jpg";
 
 function onSubmit() {
     // TODO: catch error
+	 // TODO: add error if selected year is <1948 || >2031
     isLoading.value = true;
     axios.post('/zodiac', {'birthday': birthday.value}).then((result) => {
         zodiac.value = result.data['zodiac'];

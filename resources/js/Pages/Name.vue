@@ -1,11 +1,7 @@
 <template>
 	 <Head title="Chinese Name" />
 	 <Layout>
-		  <el-row justify="center" align="middle" class="bg-img">
-				<h3>
-					 Get Your Chinese Name</h3>
-		  </el-row>
-		  <el-row justify="center" style="padding: 10px 0 10px 0">
+		  <el-row justify="center" style="padding: 100px 0 100px 0">
 				<el-form @submit.prevent>
 					 <el-form-item label="Enter Your Name">
 						<el-input v-model="name" label="Allan" id="namePicker"></el-input>
@@ -23,8 +19,8 @@
 		  <el-row justify="center">
 				<el-collapse-transition>
 					 <div v-if="simplifiedChinese">
-						  Your chinese name sign is : {{ simplifiedChinese }} <br>
-						  {{ pinyinName }}
+						  Your chinese name may be : <span class="pingfang"> {{ simplifiedChinese }} </span> <br>
+						  In hanyu pinyin : <span class="pingfang"> {{ pinyinName }} </span>
 					 </div>
 				</el-collapse-transition>
 		  </el-row>
@@ -37,8 +33,10 @@ import {ref} from 'vue';
 import axios from "axios";
 
 const name = ref('');
-const simplifiedChinese = ref('');
-const pinyinName = ref('');
+// const simplifiedChinese = ref('');
+const simplifiedChinese = ref('艾伦');
+// const pinyinName = ref('');
+const pinyinName = ref('aì lùn');
 const isLoading = ref(false);
 
 function onSubmit() {
@@ -59,4 +57,8 @@ function onDelete() {
 
 
 </script>
-<style scoped></style>
+<style scoped>
+.pingfang {
+	 font-size: 24px;
+}
+</style>

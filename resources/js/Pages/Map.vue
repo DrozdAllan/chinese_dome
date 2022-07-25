@@ -2,15 +2,12 @@
 	 <Head title="Interactive Map" />
 	 <Layout>
 		  <el-row justify="center" align="middle">
-				<h3>China Map</h3>
-		  </el-row>
-		  <el-row justify="center" align="middle">
 				<el-select v-model="filter" class="m-2" placeholder="Select a layer" size="large">
 					 <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
 				</el-select>
 		  </el-row>
-		  <el-row justify="center" style="padding: 10px 0 10px 0">
-				<l-map style="height: 500px" :zoom="4" :center="[37.00, 110.29]">
+		  <el-row justify="center" style="padding: 20px 0 0 0">
+				<l-map style="height: 75vh" :zoom="4" :center="[37.00, 110.29]">
 					 <l-tile-layer :url="url" :attribution="attribution" />
 					 <l-geo-json :geojson="geojson" :options="geooptions" />
 					 <l-marker v-if="filter === 'bigCities'" v-for="city in bigCities" :lat-lng="city['lat-lng']">

@@ -6,8 +6,7 @@
 		  <p>
 				Theme https://www.schemecolor.com/chinese-new-year-colors.php </p>
 		  <p>
-				TODO: add chinese sudoku ? https://chinese.gratis/tools/sudoku/ TODO: interactive map of china ? instead of
-				weather ? </p>
+				TODO: add chinese sudoku ? https://chinese.gratis/tools/sudoku/ </p>
 	 </Layout>
 </template>
 <script setup lang="ts">
