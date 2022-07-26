@@ -22,10 +22,7 @@ class ZodiacController extends Controller
                           ->with('zodiac')
                           ->firstOrFail();
 
-        // link used for DB https://www.chinahighlights.com/travelguide/chinese-zodiac/
-        // TODO: add disclaimer about chinese year different from normal year
-        // TODO: crop zodiacs images
-        // TODO: add images for flowers ?
+        // TODO: compress images
         return response()->json(['zodiac' => $result->zodiac]);
     }
 }
