@@ -39,7 +39,7 @@
 						  </el-row>
 					 </div>
 					 <div v-else>
-						  <p>Note: if you're born near end january/febuary, result might be wrong because of chinese new year date</p>
+						  <p>Note: if you're born near end january/february, result might be wrong because of chinese new year date</p>
 					 </div>
 				</el-collapse-transition>
 		  </el-row>

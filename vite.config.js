@@ -3,10 +3,6 @@ import laravel from 'laravel-vite-plugin';
 import vue from '@vitejs/plugin-vue';
 
 export default defineConfig({
-    server: {
-        https: true,
-        host: 'https://chinese-dome.herokuapp.com/',
-    },
     plugins: [
         laravel([
             'resources/js/app.js',
