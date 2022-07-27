@@ -2,13 +2,12 @@
 	 <Head title="Chinese Name" />
 	 <Layout>
 		  <el-row justify="center">
-<!--				TODO: add round corner for the image-->
-				<el-image :src="imageSrc" fit="contain" style="height: 200px" />
+				<el-image :src="imageSrc" fit="contain" style="height: 200px;border-radius: 5px" />
 		  </el-row>
-		  <el-row justify="center" style="padding: 50px 0 50px 0">
+		  <el-row justify="center" style="padding: 10px 0 10px 0">
 				<el-form @submit.prevent>
 					 <el-form-item label="Enter Your Name">
-						  <el-input v-model="name" label="Allan" id="namePicker"></el-input>
+						  <el-input v-model="name" @focus="onFocus" @keydown.enter="onSubmit" id="namePicker"></el-input>
 					 </el-form-item>
 					 <el-row justify="center">
 						  <el-button v-if="simplifiedChinese" type='warning' @click="onDelete">
@@ -27,7 +26,7 @@
 								Your chinese name may be : <span class="pingfang">{{ simplifiedChinese }}</span>
 						  </div>
 						  <div>
-								In hanyu pinyin : <span class="pingfang">{{ pinyinName }}</span>
+								Hanyu pinyin : <span class="pingfang">{{ pinyinName }}</span>
 						  </div>
 					 </div>
 				</el-collapse-transition>
@@ -41,15 +40,13 @@ import {ref} from 'vue';
 import axios from "axios";
 
 const name = ref('');
-// const simplifiedChinese = ref('');
-const simplifiedChinese = ref('艾伦');
-// const pinyinName = ref('');
-const pinyinName = ref('aì lùn');
+const simplifiedChinese = ref('');
+const pinyinName = ref('');
 const isLoading = ref(false);
 const imageSrc = "/assets/muraille.jpg";
 
 function onSubmit() {
-    if (name) {
+    if (name.value) {
         isLoading.value = true;
         axios.post('/name', {'name': name.value}).then((result) => {
             simplifiedChinese.value = result.data['simplifiedChinese'];
@@ -63,6 +60,11 @@ function onDelete() {
     name.value = '';
     simplifiedChinese.value = '';
     document.getElementById('namePicker')?.focus();
+}
+function onFocus() {
+    name.value = '';
+    simplifiedChinese.value = '';
+    pinyinName.value = '';
 }
 </script>
 <style scoped>

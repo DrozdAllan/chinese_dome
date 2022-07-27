@@ -7,7 +7,7 @@
 		  <el-row justify="center" style="padding: 10px 0 10px 0">
 				<el-form @submit.prevent>
 					 <el-form-item label="Enter Your Birthday">
-						  <el-date-picker v-model="birthday" type="date" placeholder="Pick a date" id="datePicker"
+						  <el-date-picker v-model="birthday" @focus="onFocus" type="date" placeholder="Pick a date" id="datePicker"
 												:clearable=false :editable=false style="width: 100%" @keydown.enter="onSubmit" />
 					 </el-form-item>
 					 <el-row justify="center">
@@ -24,17 +24,17 @@
 				<el-collapse-transition>
 					 <div v-if="zodiac">
 						  <el-row align="middle" style="text-align: center;padding-top:10px">
-								<el-col :span="8">
-									 <div> Your personality is : <b>{{ zodiac.personality }}</b></div>
-									 <div> Your lucky colors are : <b>{{ zodiac.lucky_colors }}</b></div>
+								<el-col :xs="24" :sm="8">
+									 <div class="repLine"> Your personality is : <b>{{ zodiac.personality }}</b></div>
+									 <div class="repLine"> Your lucky colors are : <b>{{ zodiac.lucky_colors }}</b></div>
 								</el-col>
-								<el-col :span="8">
-									 <div>Your zodiac sign is : <b>{{ zodiac.name }}</b></div>
+								<el-col :xs="24" :sm="8">
+									 <div class="repLine">Your zodiac sign is : <b>{{ zodiac.name }}</b></div>
 									 <el-image :src="`assets/zodiacs/${zodiac.pic}.png`" style="height: 200px" />
 								</el-col>
-								<el-col :span="8">
-									 <div>Your lucky flowers are : <b>{{ zodiac.lucky_flowers }}</b></div>
-									 <div>Your lucky numbers are : <b>{{ zodiac.lucky_numbers }}</b></div>
+								<el-col :xs="24" :sm="8">
+									 <div class="repLine">Your lucky flowers are : <b>{{ zodiac.lucky_flowers }}</b></div>
+									 <div class="repLine">Your lucky numbers are : <b>{{ zodiac.lucky_numbers }}</b></div>
 								</el-col>
 						  </el-row>
 					 </div>
@@ -69,9 +69,19 @@ function onSubmit() {
     }
 }
 
+
 function onDelete() {
     zodiac.value = null;
     birthday.value = null;
     document.getElementById('datePicker')?.focus();
 }
+function onFocus() {
+    zodiac.value = null;
+    birthday.value = null;
+}
 </script>
+<style scoped>
+.repLine {
+	 margin: 2px 0 2px 0;
+}
+</style>

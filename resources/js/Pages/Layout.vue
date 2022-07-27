@@ -3,25 +3,25 @@
 		  <el-container>
 				<el-header>
 					 <el-row align="middle" class="heading">
-						  <el-col :span="3">
-								Logo
+						  <el-col :span="4" style="display:grid;justify-items: center">
+								<el-image :src="imageSrc" fit="contain" style="height: 35px" />
 						  </el-col>
-						  <el-col :span="3">
+						  <el-col :span="4">
 								<el-link type="primary" @click="tabStore.changeTab(0)">
 									 <Link href="/" as="span" :class="{active: tab === 0}" >About</Link>
 								</el-link>
 						  </el-col>
-						  <el-col :span="3">
+						  <el-col :span="4">
 								<el-link type="primary" @click="tabStore.changeTab(1)">
 									 <Link href="/zodiac" as="span" :class="{active: tab === 1}">Zodiac</Link>
 								</el-link>
 						  </el-col>
-						  <el-col :span="3">
+						  <el-col :span="4">
 								<el-link type="primary" @click="tabStore.changeTab(2)">
 									 <Link href="/name" as="span" :class="{active: tab === 2}">Name</Link>
 								</el-link>
 						  </el-col>
-						  <el-col :span="3">
+						  <el-col :span="4">
 								<el-link type="primary" @click="tabStore.changeTab(4)">
 									 <Link href="/map" as="span" :class="{active: tab === 4}">Map</Link>
 								</el-link>
@@ -43,6 +43,8 @@ import {useTabStore} from "../store/tab";
 
 const tabStore = useTabStore();
 const tab = tabStore.tab;
+
+const imageSrc = 'assets/logo.png';
 
 </script>
 <style>

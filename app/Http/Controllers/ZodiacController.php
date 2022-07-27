@@ -22,7 +22,6 @@ class ZodiacController extends Controller
                           ->with('zodiac')
                           ->firstOrFail();
 
-        // TODO: compress images
         return response()->json(['zodiac' => $result->zodiac]);
     }
 }
