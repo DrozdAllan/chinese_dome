@@ -1,20 +1,19 @@
 <template>
-	 <Head title="About this app" />
+	 <Head title="About This App" />
 	 <Layout>
 		  <div style="text-align: center;line-height: 2">
-				
-		  <h1>你好 & welcome to the chinese dome</h1>
-		  <p>This app is developed by <a :href=link target="_blank">Allan Drozd</a></p>
-				
-				
-<div><b>Credits :</b></div>
-		  <div>Zodiac animals banner by <a href='https://www.freepik.com/author/tartila' target="_">tartila on Freepik</a></div>
-		  <div>Zodiac individual animals by <a href='https://mixkit.co/@casandrabanuelos/' target="_">Casandra Banuelos on mixkit</a></div>
-		  <div>Great Wall of China photo by <a href='https://www.pexels.com/fr-fr/@diana-2910042/' target="_">Diana on Pexels</a></div>
-		  <div>Name traduction to simplified chinese by <a href="https://cloud.google.com/translate" target="_">Google Cloud Translation API</a></div>
-		  <div>Traduction to hanyu pinyin by <a href="https://github.com/overtrue/pinyin" target="_">overtrue</a></div>
-		  <div>China flag by <a href='https://www.flaticon.com/fr/auteurs/rasama-studio' target="_">Rasama studio on Flaticon</a></div>
 
+		  <h1>你好 & welcome to the chinese dome</h1>
+		  <p>This app is developed by <el-link type="primary" :underline="false" target="_blank" :href=link>Allan Drozd</el-link></p>
+
+
+<div><b>Credits :</b></div>
+		  <div>Zodiac animals banner by <el-link type="primary" :underline="false" target="_blank" href='https://www.freepik.com/author/tartila'>tartila on Freepik</el-link></div>
+		  <div>Zodiac individual animals by <el-link type="primary" :underline="false" target="_blank" href='https://mixkit.co/@casandrabanuelos/'>Casandra Banuelos on mixkit</el-link></div>
+		  <div>Great Wall of China photo by <el-link type="primary" :underline="false" target="_blank" href='https://www.pexels.com/fr-fr/@diana-2910042/'>Diana on Pexels</el-link></div>
+		  <div>Name traduction to simplified chinese by <el-link type="primary" :underline="false" target="_blank" href='https://cloud.google.com/translate'>Google Cloud Translation API</el-link></div>
+		  <div>Traduction to hanyu pinyin by <el-link type="primary" :underline="false" target="_blank" href='https://github.com/overtrue/pinyin'>overtrue</el-link></div>
+		  <div>China flag by <el-link type="primary" :underline="false" target="_blank" href='https://www.flaticon.com/fr/auteurs/rasama-studio'>Rasama studio on Flaticon</el-link></div>
 		  </div>
 	 </Layout>
 </template>
@@ -22,6 +21,5 @@
 import Layout from './Layout.vue'
 import {Head} from '@inertiajs/inertia-vue3'
 
-const props = defineProps({'flower': String});
 const link = "https://allandrozd.com/";
 </script>

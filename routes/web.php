@@ -15,7 +15,7 @@ use Inertia\Inertia;
 */
 
 Route::get('/', function () {
-    return Inertia::render('About', ['flower' => 'rose']);
+    return Inertia::render('About');
 })
      ->name('about');
 
