@@ -14,50 +14,12 @@ namespace App\Models{
 /**
  * App\Models\Birthday
  *
- * @property int $id
- * @property int $zodiac_id
- * @property int $year
  * @property-read \App\Models\Zodiac|null $zodiac
  * @method static \Illuminate\Database\Eloquent\Builder|Birthday newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Birthday newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Birthday query()
- * @method static \Illuminate\Database\Eloquent\Builder|Birthday whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Birthday whereYear($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Birthday whereZodiacId($value)
  */
 	class Birthday extends \Eloquent {}
-}
-
-namespace App\Models{
-/**
- * App\Models\User
- *
- * @property int $id
- * @property string $name
- * @property string $email
- * @property \Illuminate\Support\Carbon|null $email_verified_at
- * @property string $password
- * @property string|null $remember_token
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
- * @property-read int|null $notifications_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\Laravel\Sanctum\PersonalAccessToken[] $tokens
- * @property-read int|null $tokens_count
- * @method static \Database\Factories\UserFactory factory(...$parameters)
- * @method static \Illuminate\Database\Eloquent\Builder|User newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|User newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|User query()
- * @method static \Illuminate\Database\Eloquent\Builder|User whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereEmail($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereEmailVerifiedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User wherePassword($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereRememberToken($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
- */
-	class User extends \Eloquent {}
 }
 
 namespace App\Models{
@@ -70,8 +32,7 @@ namespace App\Models{
  * @property string $lucky_numbers
  * @property string $lucky_colors
  * @property string $lucky_flowers
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Birthday[] $birthdays
- * @property-read int|null $birthdays_count
+ * @property string $pic
  * @method static \Illuminate\Database\Eloquent\Builder|Zodiac newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Zodiac newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Zodiac query()
@@ -81,6 +42,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Zodiac whereLuckyNumbers($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Zodiac whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Zodiac wherePersonality($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Zodiac wherePic($value)
  */
 	class Zodiac extends \Eloquent {}
 }

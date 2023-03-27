@@ -7,7 +7,7 @@
 		  <el-row justify="center" style="padding: 10px 0 10px 0">
 				<el-form @submit.prevent>
 					 <el-form-item label="Enter Your Birthday">
-						  <el-date-picker v-model="birthday" @focus="onFocus" type="date" placeholder="Pick a date" id="datePicker"
+						  <el-date-picker v-model="birthday" @focus="onFocus" type="date" placeholder="Years go from 1970 to 2030" id="datePicker"
 												:clearable=false :editable=false style="width: 100%" @keydown.enter="onSubmit" />
 					 </el-form-item>
 					 <el-row justify="center">
@@ -38,14 +38,11 @@
 								</el-col>
 						  </el-row>
 					 </div>
-					 <div v-else>
-						  <p>Note: if you're born near end january/february, result might be wrong because of chinese new year date</p>
-					 </div>
 				</el-collapse-transition>
 		  </el-row>
 	 </Layout>
 </template>
-<script setup lang="ts">
+<script setup>
 import {Head} from '@inertiajs/inertia-vue3';
 import Layout from './Layout.vue';
 import {ref} from 'vue'
@@ -56,8 +53,8 @@ const zodiac = ref(null);
 const isLoading = ref(false);
 const imageSrc = "/assets/zodiacMain.jpg";
 
-const maxYear = new Date().setFullYear(2031);
-const minYear = new Date().setFullYear(1948);
+const maxYear = new Date().setFullYear(2030);
+const minYear = new Date().setFullYear(1970);
 
 function onSubmit() {
     if (birthday.value && birthday.value > minYear && birthday.value < maxYear) {
@@ -69,7 +66,6 @@ function onSubmit() {
     }
 }
 
-
 function onDelete() {
     zodiac.value = null;
     birthday.value = null;
@@ -77,7 +73,7 @@ function onDelete() {
 }
 function onFocus() {
     zodiac.value = null;
-    birthday.value = null;
+    // birthday.value = null;
 }
 </script>
 <style scoped>

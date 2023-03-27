@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('birthdays', function (Blueprint $table) {
             $table->id();
             $table->foreignId('zodiac_id')->constrained();
-            $table->integer('year');
+            $table->date('start_date');
         });
     }
 
